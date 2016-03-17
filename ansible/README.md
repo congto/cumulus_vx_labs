@@ -14,10 +14,11 @@ While this works well for purely local SSH access, it inherently makes it hard t
 ---
 
 ## Labs
-* ### 1 Spine - 2 Leaf - 2 Host
+* #### 1 Spine - 2 Leaf - 2 Host
 
-* ### 2 Spine - 2 Leaf - 2 Host
+* #### 2 Spine - 2 Leaf - 2 Host
 
-* ### 2 Spine - 4 Leaf - 2 Host
- * #### VXLAN with CLAG
- Leaf switches are configured with CLAG down to the hosts, and VXLAN between leaf pods.
+* #### 2 Spine - 4 Leaf - 2 Host
+  * **_VXLAN with CLAG_**
+    * Leaf switches are configured with CLAG down to the hosts, and VXLAN between leaf pods.
+      * Deployment: `ansible-playbook conf-restore --extra-vars "topology=2spine_4leaf_2host lab=vxlan_with_clag"`
