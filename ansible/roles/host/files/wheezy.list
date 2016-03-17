@@ -1,0 +1,6 @@
+#
+# Debian Linux Public Repo
+#
+
+deb http://debian.gtisc.gatech.edu/debian/ wheezy main non-free contrib
+

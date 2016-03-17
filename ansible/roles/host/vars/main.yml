@@ -1,0 +1,11 @@
+---
+#
+# nmitchell - 2016-02-03
+#
+
+conf_files:
+  - { name: "interfaces", remote_location: "/etc/network/interfaces"}
+  - { name: "interfaces_vagrant.cfg", remote_location: "/etc/network/interfaces.d/vagrant.cfg"}
+  - { name: "interfaces_vagrant", remote_location: "/etc/network/interfaces.d/vagrant"}
+  - { name: "interfaces_interfaces.cfg", remote_location: "/etc/network/interfaces.d/interfaces.cfg"}
+  - { name: "interfaces_interfaces", remote_location: "/etc/network/interfaces.d/interfaces"}

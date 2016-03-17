@@ -1,0 +1,58 @@
+---
+- hosts: vx
+  roles:
+    - cumulus
+    - common
+  user: root
+  become: True
+  gather_facts: yes
+  tasks:
+    #- name: dump facts
+    #  debug: var=hostvars[inventory_hostname]
+    - name: check to see which conf files exist
+      become: false
+      local_action: stat path={{labs_location}}{{item.name}}
+      register: stat_result
+      with_items: conf_files
+    - name: if /etc/network/interfaces.d doesn't exist, create it
+      file: path=/etc/network/interfaces.d state=directory
+    - name: copy the files that exist locally
+      when: stat_result.results.{{ item.0 }}.stat.exists == True
+      copy: src={{ labs_location }}{{ item.1.name }} dest={{ item.1.remote_location }}
+      with_indexed_items: "{{ conf_files }}"
+    - name: restart services (common)
+      command: /bin/true
+      when: ansible_lsb.id == "Cumulus Linux"
+      notify:
+        - restart quagga
+        - restart networking
+        - restart ptmd
+        - restart interfaces
+        - restart vxsnd
+        - restart vxrd
+
+- hosts: host
+  roles:
+    - host
+    - common
+  user: root
+  become: True
+  gather_facts: yes
+  tasks:
+    #- name: dump facts
+    #  debug: var=hostvars[inventory_hostname]
+    - name: check to see which conf files exist
+      become: false
+      local_action: stat path={{labs_location}}{{item.name}}
+      register: stat_result
+      with_items: conf_files
+    - name: if /etc/network/interfaces.d doesn't exist, create it
+      file: path=/etc/network/interfaces.d state=directory
+    - name: copy the files that exist locally
+      when: stat_result.results.{{ item.0 }}.stat.exists == True
+      copy: src={{ labs_location }}{{ item.1.name }} dest={{ item.1.remote_location }}
+      with_indexed_items: "{{ conf_files }}"
+    - name: restart services (common)
+      command: /bin/true
+      notify:
+        - restart networking

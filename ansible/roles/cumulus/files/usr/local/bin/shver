@@ -1,0 +1,13 @@
+#!/bin/bash
+# Copyright 2014 Cumulus Networks, Inc. All rights reserved.
+
+
+platform-detect
+echo ""
+cat /etc/lsb-release
+echo ""
+cl-img-select
+echo ""
+uname -a 
+
+#end

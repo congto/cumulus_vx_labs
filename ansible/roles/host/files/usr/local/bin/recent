@@ -1,0 +1,24 @@
+#/bin/bash
+
+#
+# Input should be null or a positive number
+#
+
+if [ -z "$1" ]; then
+   # default number of max files to list
+   max="10"
+else
+  re='^[0-9]+$'
+  if ! [[ $1 =~ $re ]] ; then
+      echo "List most recently modified files in the current directory"
+      echo "usage:"
+      echo "recent <max_number>" 
+      exit
+  fi
+  max=$1
+fi
+
+max=$((max+1))
+
+ls -FlAt | head -n $max
+exit

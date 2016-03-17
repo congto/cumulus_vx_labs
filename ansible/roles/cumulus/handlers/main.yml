@@ -1,0 +1,32 @@
+---
+#
+# nmitchell - 2016-02-01
+#
+
+# ifreload
+- name: reload interfaces
+  command: ifreload -a
+
+# networking
+- name: restart networking
+  service: name=networking state=restarted
+
+# ptmd
+- name: restart ptmd
+  service: name=ptmd state=restarted
+
+# switchd
+- name: restart switchd
+  service: name=switchd state=restarted
+
+# quagga
+- name: restart quagga
+  service: name=quagga state=restarted
+
+# vxrd
+- name: restart vxrd
+  service: name=vxrd state=restarted
+
+# vxrd
+- name: restart vxsnd
+  service: name=vxsnd state=restarted

@@ -1,0 +1,21 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+num_licenses=2x
+expires=1452902400 #2016-01-16
+email=henrik@akanda.io
+lic_id=L-0778-201501
+NFR=1
+need_eula=1
+account_name=Akanda
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.12 (GNU/Linux)
+
+iQEcBAEBAgAGBQJUuYejAAoJEIVljcCqXnih840H/2ghnIskIM6+5nxuw2YJjNin
+MeqhaHJew+i6qXiF/JMtG2XtBJLXpGkQJFGgR+EXlLyk8l+6SlFerFwnIYqDIj/c
+s1bkfbJ409JVtR2iX+enHfMjgdZx/f4yS7C0V6l3FeCjnpL6pfTE7nUsJF7Xxl/+
+jeieXwjQtQOAELrfJbPEJaCs+duAlQCX91AjcSh9Kay4ep63Byy3/qxPuV0r8fSQ
+OfUDCYAyYuEbKACLk5rQ1q6imVRjDbcBmvYtRzkmsBIIW2S7C+cB6QsbF1PzJx4t
+PClIkvOOgTRUkRr1cvVj9C2KCwY+LhDKjLdGZvnihERG+h7lcvTxVzvCvl2Hsms=
+=oxig
+-----END PGP SIGNATURE-----

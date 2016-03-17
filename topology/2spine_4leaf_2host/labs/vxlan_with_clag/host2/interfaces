@@ -1,0 +1,28 @@
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+allow-hotplug eth0
+iface eth0 inet dhcp
+pre-up sleep 2
+
+auto eth1
+iface eth1 inet manual
+    bond-master bond0
+
+auto eth2
+iface eth2 inet manual
+    bond-master bond0
+
+auto bond0
+iface bond0 inet static
+    address 192.168.1.254/24
+    slaves eth1 eth2
+    bond_mode 802.3ad
+    bond_miimon 100
+    bond_lacp_rate 1
+    post-up ip link set promisc on dev bond0

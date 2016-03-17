@@ -1,0 +1,7 @@
+---
+#
+# nmitchell - 2016-03-17
+#
+
+labs_location: "topology/{{topology}}/labs/{{lab}}/{{ansible_hostname}}/"
+topology: "generic"

@@ -1,0 +1,116 @@
+
+##################################
+#  Ansible Inventory Definitions #
+##################################
+
+groups = {
+  "spine" => ["spine1"],
+  "leaf" => ["leaf1", "leaf2"],
+  "host" => ["host1", "host2"],
+  "vx:children" => ["spine", "leaf"],
+  "vagrant:children" => ["spine", "leaf", "host"]
+}
+
+
+##################################
+#   Vagrant Machine Definitions  #
+##################################
+
+Vagrant.configure(2) do |config|
+
+  config.vm.define "spine1" do |spine1|
+	spine1.vm.box = "cumulus-vx-2.5.6"
+
+    spine1.vm.hostname = "spine1"
+    spine1.vm.network "private_network", virtualbox__intnet: "s1l1"
+    spine1.vm.network "private_network", virtualbox__intnet: "s1l2"
+
+    spine1.vm.provision "ansible" do |ansible|
+      ansible.playbook = "ansible/switch-provision.yml"
+      ansible.groups = groups
+    end
+
+    spine1.vm.provider "virtualbox" do |v|
+      v.customize ["modifyvm", :id, "--macaddress1", "000000111111"]
+      v.customize ["modifyvm", :id, "--nicpromisc2", "allow-vms"]
+      v.customize ["modifyvm", :id, "--nicpromisc3", "allow-vms"]
+    end
+
+  end
+
+  config.vm.define "leaf1" do |leaf1|
+	leaf1.vm.box = "cumulus-vx-2.5.6"
+
+    leaf1.vm.hostname = "leaf1"
+    leaf1.vm.network "private_network", virtualbox__intnet: "s1l1"
+    leaf1.vm.network "private_network", virtualbox__intnet: "l1h1"
+
+    leaf1.vm.provision "ansible" do |ansible|
+      ansible.playbook = "ansible/switch-provision.yml"
+      ansible.groups = groups
+    end
+
+    leaf1.vm.provider "virtualbox" do |v|
+      v.customize ["modifyvm", :id, "--macaddress1", "000000111121"]
+      v.customize ["modifyvm", :id, "--nicpromisc2", "allow-vms"]
+      v.customize ["modifyvm", :id, "--nicpromisc3", "allow-vms"]
+    end
+
+  end
+
+  config.vm.define "leaf2" do |leaf2|
+	leaf2.vm.box = "cumulus-vx-2.5.6"
+
+    leaf2.vm.hostname = "leaf2"
+    leaf2.vm.network "private_network", virtualbox__intnet: "s1l2"
+    leaf2.vm.network "private_network", virtualbox__intnet: "l2h2"
+
+    leaf2.vm.provision "ansible" do |ansible|
+      ansible.playbook = "ansible/switch-provision.yml"
+      ansible.groups = groups
+    end
+
+    leaf2.vm.provider "virtualbox" do |v|
+      v.customize ["modifyvm", :id, "--macaddress1", "000000111122"]
+      v.customize ["modifyvm", :id, "--nicpromisc2", "allow-vms"]
+      v.customize ["modifyvm", :id, "--nicpromisc3", "allow-vms"]
+    end
+
+  end
+
+  config.vm.define "host1" do |host1|
+	host1.vm.box = "ubuntu/trusty64"
+
+    host1.vm.hostname = "host1"
+    host1.vm.network "private_network", virtualbox__intnet: "l1h1", auto_config: false
+
+    host1.vm.provider "virtualbox" do |v|
+      v.customize ["modifyvm", :id, "--macaddress1", "000000111131"]
+      v.customize ["modifyvm", :id, "--nicpromisc2", "allow-vms"]
+    end
+
+    host1.vm.provision "ansible" do |ansible|
+      ansible.playbook = "ansible/host-provision.yml"
+      ansible.groups = groups
+    end
+
+  end
+
+  config.vm.define "host2" do |host2|
+	host2.vm.box = "ubuntu/trusty64"
+
+    host2.vm.hostname = "host2"
+    host2.vm.network "private_network", virtualbox__intnet: "l2h2", auto_config: false
+
+    host2.vm.provider "virtualbox" do |v|
+      v.customize ["modifyvm", :id, "--macaddress1", "000000111132"]
+      v.customize ["modifyvm", :id, "--nicpromisc2", "allow-vms"]
+    end
+
+    host2.vm.provision "ansible" do |ansible|
+      ansible.playbook = "ansible/host-provision.yml"
+      ansible.groups = groups
+    end
+
+  end
+end

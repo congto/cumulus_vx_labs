@@ -1,0 +1,3 @@
+#!/bin/bash
+# Copyright 2014 Cumulus Networks, Inc. All rights reserved.
+for i in /sys/class/net/*; do iface=`basename $i`; if [[ $iface == swp* ]]; then echo $iface; ethtool -S $iface; fi done | grep -v ": 0" 

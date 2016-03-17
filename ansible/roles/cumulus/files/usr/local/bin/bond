@@ -1,0 +1,9 @@
+#!/bin/bash
+# Copyright 2014 Cumulus Networks, Inc. All rights reserved.
+
+if [[ -n $1 ]]; then
+        cat /proc/net/bonding/$1
+else
+        ls -l /proc/net/bonding | egrep -iv Total
+fi
+

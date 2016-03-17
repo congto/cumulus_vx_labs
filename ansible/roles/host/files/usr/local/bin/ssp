@@ -1,0 +1,3 @@
+
+mstpctl showport $1 | grep -v down
+

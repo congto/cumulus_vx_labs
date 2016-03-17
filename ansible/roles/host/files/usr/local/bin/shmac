@@ -1,0 +1,24 @@
+#!/bin/bash
+# Copyright 2014 Cumulus Networks, Inc. All rights reserved.
+
+
+if [[ -n $1 ]]; then
+ echo "  arp -an"
+ arp -an | grep $1
+fi
+echo " "
+
+if [[ -n $1 ]]; then
+ echo "  bridge fdb show "
+ bridge fdb show | grep $1
+fi
+echo " "
+
+if [[ -n $1 ]]; then
+ echo "  bcmcmd l2 show"
+ /usr/lib/cumulus/bcmcmd l2 show | grep $1
+else
+ /usr/lib/cumulus/bcmcmd l2 show
+fi
+
+

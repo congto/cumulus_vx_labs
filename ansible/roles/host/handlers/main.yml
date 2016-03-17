@@ -1,0 +1,8 @@
+---
+#
+# nmitchell - 2016-02-01
+#
+
+# networking
+- name: restart networking
+  command: networking-restart.sh

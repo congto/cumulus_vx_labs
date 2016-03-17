@@ -1,0 +1,25 @@
+---
+#
+# nmitchell - 2016-02-03
+#
+
+version: "2.5.6"
+conf_files:
+  - { name: "interfaces", remote_location: "/etc/network/interfaces"}
+  - { name: "interfaces_vagrant.cfg", remote_location: "/etc/network/interfaces.d/vagrant.cfg"}
+  - { name: "interfaces_vagrant", remote_location: "/etc/network/interfaces.d/vagrant"}
+  - { name: "interfaces_interfaces.cfg", remote_location: "/etc/network/interfaces.d/interfaces.cfg"}
+  - { name: "interfaces_interfaces", remote_location: "/etc/network/interfaces.d/interfaces"}
+  - { name: "topology.dot", remote_location: "/etc/ptm.d/topology.dot"}
+  - { name: "daemons", remote_location: "/etc/quagga/daemons"}
+  - { name: "Quagga.conf", remote_location: "/etc/quagga/Quagga.conf"}
+  - { name: "bgpd.conf", remote_location: "/etc/quagga/bgpd.conf"}
+  - { name: "ospf6d.conf", remote_location: "/etc/quagga/ospf6d.conf"}
+  - { name: "ospfd.conf", remote_location: "/etc/quagga/ospfd.conf"}
+  - { name: "vtysh.conf", remote_location: "/etc/quagga/vtysh.conf"}
+  - { name: "zebra.conf", remote_location: "/etc/quagga/zebra.conf"}
+  - { name: "vlanx.conf", remote_location: "/etc/sysctl.d/vlanx.conf"}
+  - { name: "vxsnd", remote_location: "/etc/default/vxsnd"}
+  - { name: "vxsnd.conf", remote_location: "/etc/vxsnd.conf"}
+  - { name: "vxrd", remote_location: "/etc/default/vxrd"}
+  - { name: "vxrd.conf", remote_location: "/etc/vxrd.conf"}
