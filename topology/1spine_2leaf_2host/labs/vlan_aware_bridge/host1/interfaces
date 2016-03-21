@@ -1,0 +1,55 @@
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# Source interfaces
+# Please check /etc/network/interfaces.d before changing this file
+# as interfaces may have been defined in /etc/network/interfaces.d
+# NOTE: the primary ethernet device is defined in
+# /etc/network/interfaces.d/eth0
+# See LP: #1262951
+source /etc/network/interfaces.d/*.cfg
+
+auto eth1
+iface eth1 inet static
+    address 192.168.1.1/24
+
+auto eth1.2
+iface eth1.2 inet static
+    address 192.168.2.1/24
+
+auto eth1.3
+iface eth1.3 inet static
+    address 192.168.3.1/24
+
+auto eth1.4
+iface eth1.4 inet static
+    address 192.168.4.1/24
+
+auto eth1.5
+iface eth1.5 inet static
+    address 192.168.5.1/24
+
+auto eth1.6
+iface eth1.6 inet static
+    address 192.168.6.1/24
+
+auto eth1.7
+iface eth1.7 inet static
+    address 192.168.7.1/24
+
+auto eth1.8
+iface eth1.8 inet static
+    address 192.168.8.1/24
+
+auto eth1.9
+iface eth1.9 inet static
+    address 192.168.9.1/24
+
+auto eth1.10
+iface eth1.10 inet static
+    address 192.168.10.1/24
+

@@ -1,5 +1,5 @@
 ---
-- hosts: "{{vx}}"
+- hosts: vx
   roles:
     - cumulus
     - common
@@ -15,7 +15,7 @@
       when: stat_result.results.{{ item.0 }}.stat.exists == True
       with_indexed_items: "{{ conf_files }}"
 
-- hosts: "{{host}}"
+- hosts: host
   roles:
     - host
     - common
