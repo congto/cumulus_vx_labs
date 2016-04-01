@@ -15,6 +15,15 @@ While this works well for purely local SSH access, it inherently makes it hard t
 
 ## Labs
 * #### 1 Spine - 2 Leaf - 2 Host
+  * **_VLAN Aware Bridging_**
+    * VLAN aware bridging is configured on Spine and Leaf switches, enabling connectivity between Host1 and Host2
+      * Deployment: `ansible-playbook conf-restore --extra-vars "topology=1spine_2leaf_2host lab=vlan_aware_bridge"`
+  * **_OSPF Unnumbered_**
+    * OSPF unnumbered is configured on Spine and Leaf switches, enabling connectivity between Host1 and Host2
+      * Deployment: `ansible-playbook conf-restore --extra-vars "topology=1spine_2leaf_2host lab=ospf_unnumbered"`
+  * **_BGP Unnumbered_**
+    * BGP unnumbered is configured on Spine and Leaf switches, enabling connectivity between Host1 and Host2
+      * Deployment: `ansible-playbook conf-restore --extra-vars "topology=1spine_2leaf_2host lab=bgp_unnumbered"`
 
 * #### 2 Spine - 2 Leaf - 2 Host
 
