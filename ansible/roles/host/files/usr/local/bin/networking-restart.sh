@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for interface in eth1 eth2
+for interface in `ifquery --list | egrep -o "eth[^0](\.[0-9]+)?"`
 do
   ifdown $interface
   ifup $interface
