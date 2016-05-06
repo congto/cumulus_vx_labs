@@ -3,6 +3,9 @@
 #  Ansible Inventory Definitions #
 ##################################
 
+switch_box = "cumulus-vx-2.5.7"
+host_box = "ubuntu/trusty64"
+
 groups = {
   "spine" => ["spine1", "spine2"],
   "leaf" => ["leaf1", "leaf2", "leaf3", "leaf4"],
@@ -19,7 +22,7 @@ groups = {
 Vagrant.configure(2) do |config|
 
   config.vm.define "spine1" do |spine1|
-	spine1.vm.box = "cumulus-vx-2.5.6"
+	spine1.vm.box = switch_box
 
     spine1.vm.hostname = "spine1"
     spine1.vm.network "private_network", virtualbox__intnet: "s1l1"
@@ -45,7 +48,7 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.define "spine2" do |spine2|
-	spine2.vm.box = "cumulus-vx-2.5.6"
+	spine2.vm.box = switch_box
 
     spine2.vm.hostname = "spine2"
     spine2.vm.network "private_network", virtualbox__intnet: "s2l1"
@@ -70,7 +73,7 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.define "leaf1" do |leaf1|
-	leaf1.vm.box = "cumulus-vx-2.5.6"
+	leaf1.vm.box = switch_box
 
     leaf1.vm.hostname = "leaf1"
     leaf1.vm.network "private_network", virtualbox__intnet: "s1l1"
@@ -94,7 +97,7 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.define "leaf2" do |leaf2|
-	leaf2.vm.box = "cumulus-vx-2.5.6"
+	leaf2.vm.box = switch_box
 
     leaf2.vm.hostname = "leaf2"
     leaf2.vm.network "private_network", virtualbox__intnet: "s1l2"
@@ -118,7 +121,7 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.define "leaf3" do |leaf3|
-	leaf3.vm.box = "cumulus-vx-2.5.6"
+	leaf3.vm.box = switch_box
 
     leaf3.vm.hostname = "leaf3"
     leaf3.vm.network "private_network", virtualbox__intnet: "s1l3"
@@ -142,7 +145,7 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.define "leaf4" do |leaf4|
-	leaf4.vm.box = "cumulus-vx-2.5.6"
+	leaf4.vm.box = switch_box
 
     leaf4.vm.hostname = "leaf4"
     leaf4.vm.network "private_network", virtualbox__intnet: "s1l4"
@@ -166,7 +169,7 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.define "host1" do |host1|
-	host1.vm.box = "ubuntu/trusty64"
+	host1.vm.box = host_box
 
     host1.vm.hostname = "host1"
     host1.vm.network "private_network", virtualbox__intnet: "l1h1", auto_config: false
@@ -186,7 +189,7 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.define "host2" do |host2|
-	host2.vm.box = "ubuntu/trusty64"
+	host2.vm.box = host_box
 
     host2.vm.hostname = "host2"
     host2.vm.network "private_network", virtualbox__intnet: "l3h2", auto_config: false

@@ -86,25 +86,34 @@
       when: stat_result.stat.exists == True
     - name: dpkg-reconfigure tzdata so right time is displayed by date command
       command: dpkg-reconfigure --frontend noninteractive tzdata
-    # load wheezy repo and install extra packages
+    # load correct repo and install extra packages
+    - name: check if /etc/image-release exists
+      stat: path=/etc/image-release
+      register: stat_result
+    - name: load jessie repo
+      copy: src=roles/cumulus/files/jessie.list dest=/etc/apt/sources.list.d/jessie.list
+      tags:
+        - repos
+      when: stat_result.stat.exists == True
     - name: load wheezy repo
       copy: src=roles/cumulus/files/wheezy.list dest=/etc/apt/sources.list.d/wheezy.list
       tags:
         - repos
+      when: stat_result.stat.exists == False
     - name: install apt-utils
-      apt: name=apt-utils default_release=wheezy
+      apt: name=apt-utils
       tags:
         - packages
     - name: install vim
-      apt: name=vim default_release=wheezy
+      apt: name=vim
       tags:
         - packages
     - name: install tshark
-      apt: name=tshark default_release=wheezy
+      apt: name=tshark
       tags:
         - packages
     - name: install bwm-ng
-      apt: name=bwm-ng default_release=wheezy
+      apt: name=bwm-ng
       tags:
         - packages
     # add source /etc/network/interfaces.d/*
