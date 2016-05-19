@@ -7,6 +7,9 @@
   become: True
   gather_facts: yes
   tasks:
+    # declare start of ansible provisioning to all users
+    - name: Announce start of provisioning
+      shell: echo "System provisioning via Ansible starting!" | wall
     # set root password
     - name: Setting root password to 'cn321'
       user: name=root password="$6$E.DRdQpDf$qbzP/lrG96ll7npIABuE/3NIO0L2ItDrOjAZEX9G4Lq9keJWMygSlw9BCNkLxqafdV/qOO6BUKy5i5JDoOxM10"
@@ -128,3 +131,6 @@
     - name: copy blank.cfg to stop source error on ifreload -a
       copy: src=roles/cumulus/files/etc/network/interfaces.d/blank.cfg dest=/etc/network/interfaces.d/blank.cfg
       when: stat_result.stat.exists == True
+    # declare end of system provisioning
+    - name: Announce completion of provisioning
+      shell: echo "System provisioning via Ansible complete!" | wall
