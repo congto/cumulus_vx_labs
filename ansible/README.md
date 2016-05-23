@@ -31,3 +31,7 @@ While this works well for purely local SSH access, it inherently makes it hard t
   * **_VXLAN with CLAG_**
     * Leaf switches are configured with CLAG down to the hosts, and VXLAN between leaf pods.
       * Deployment: `ansible-playbook conf-restore --extra-vars "topology=2spine_4leaf_2host lab=vxlan_with_clag"`
+  * **_Redistribute Neighbor_**
+    * Leaf switches are configured for redistribute neighbor, for uplink redundancy without configuring CLAG.
+      * Deployment: `ansible-playbook conf-restore --extra-vars "topology=2spine_4leaf_2host lab=rdnbrd"`
+      * Configuration changes:

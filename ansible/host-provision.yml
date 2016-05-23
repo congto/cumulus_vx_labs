@@ -8,27 +8,24 @@
   tasks:
     - name: configure /etc/motd
       template: src=motd.j2 dest=/etc/motd
-
     - name: install ifenslave
       apt: name=ifenslave state=present
-
     - name: install vlan
       apt: name=vlan state=present
-
+    - name: install arping
+      apt: name=arping state=present
     - name: adding bonding and rtc modules to /etc/modules
       lineinfile: dest=/etc/modules line="{{ item }}"
       with_items:
         - "rtc"
         - "bonding"
         - "8021q"
-
     - name: push hypervisors public SSH key
       # If Linux
       # authorized_key: user=vagrant key="{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
       #
       # If Mac
       authorized_key: user=vagrant key="{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
-
     # /usr/local/bin
     - name: Check that usr/local/bin directory exists
       become: false

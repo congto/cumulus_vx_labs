@@ -23,3 +23,4 @@ conf_files:
   - { name: "vxsnd.conf", remote_location: "/etc/vxsnd.conf"}
   - { name: "vxrd", remote_location: "/etc/default/vxrd"}
   - { name: "vxrd.conf", remote_location: "/etc/vxrd.conf"}
+  - { name: "sources.list", remote_location: "/etc/apt/sources.list"}

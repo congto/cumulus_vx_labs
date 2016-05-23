@@ -1,4 +1,25 @@
 ---
+# specific lab setup instructions
+- hosts: leaf
+  roles:
+    - cumulus
+    - common
+  user: root
+  become: True
+  gather_facts: yes
+  tasks:
+    # lab specific steps for redistribute neighbor
+    - name: add testing repo for python-rdnbrd package
+      copy: src=roles/cumulus/files/2_5-testing.list dest=/etc/apt/sources.list.d/2_5-testing.list
+      when: lab == 'rdnbrd'
+    - name: install python-rdnbrd
+      apt: update_cache=yes name=python-rdnbrd state=present
+      when: lab == 'rdnbrd'
+    - name: restart rdnbrd
+      service: name=rdnbrd state=restarted
+      when: lab == 'rdnbrd'
+
+# re-apply configurations after packages, etc have been installed for specific lab
 - hosts: vx
   roles:
     - cumulus
@@ -30,7 +51,6 @@
         - restart interfaces
         - restart vxsnd
         - restart vxrd
-
 - hosts: host
   roles:
     - host
