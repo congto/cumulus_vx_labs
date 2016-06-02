@@ -8,15 +8,26 @@
   become: True
   gather_facts: yes
   tasks:
-    # lab specific steps for redistribute neighbor
-    - name: add testing repo for python-rdnbrd package
-      copy: src=roles/cumulus/files/2_5-testing.list dest=/etc/apt/sources.list.d/2_5-testing.list
-      when: lab == 'rdnbrd'
-    - name: install python-rdnbrd
-      apt: update_cache=yes name=python-rdnbrd state=present
-      when: lab == 'rdnbrd'
     - name: restart rdnbrd
       service: name=rdnbrd state=restarted
+      when: lab == 'rdnbrd'
+- hosts: host
+  roles:
+    - host
+    - common
+  user: root
+  become: True
+  gather_facts: yes
+  tasks:
+    # lab specific steps for redistribute neighbor
+    - name: install arping package
+      apt: update_cache=yes name=arping state=present
+      when: lab == 'rdnbrd'
+    - name: install ifplugd package
+      apt: update_cache=yes name=ifplugd state=present
+      when: lab == 'rdnbrd'
+    - name: install ifupdown2
+      apt: update_cache=yes name=ifupdown2 state=present
       when: lab == 'rdnbrd'
 
 # re-apply configurations after packages, etc have been installed for specific lab
@@ -34,7 +45,7 @@
       become: false
       local_action: stat path={{labs_location}}{{item.name}}
       register: stat_result
-      with_items: conf_files
+      with_items: "{{ conf_files }}"
     - name: if /etc/network/interfaces.d doesn't exist, create it
       file: path=/etc/network/interfaces.d state=directory
     - name: copy the files that exist locally
@@ -65,7 +76,7 @@
       become: false
       local_action: stat path={{labs_location}}{{item.name}}
       register: stat_result
-      with_items: conf_files
+      with_items: "{{ conf_files }}"
     - name: if /etc/network/interfaces.d doesn't exist, create it
       file: path=/etc/network/interfaces.d state=directory
     - name: copy the files that exist locally

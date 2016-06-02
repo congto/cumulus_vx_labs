@@ -3,8 +3,8 @@
 #  Ansible Inventory Definitions #
 ##################################
 
-switch_box = "cumulus-vx-2.5.7"
-host_box = "ubuntu/trusty64"
+switch_box = "cumulus-vx-3.0.0"
+host_box = "boxcutter/ubuntu1404"
 
 groups = {
   "spine" => ["spine1", "spine2"],

@@ -4,7 +4,7 @@
 ##################################
 
 switch_box = "cumulus-vx-3.0.0"
-host_box = "ubuntu/trusty64"
+host_box = "boxcutter/ubuntu1604"
 
 groups = {
   "spine" => ["spine1"],

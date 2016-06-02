@@ -9,7 +9,7 @@
     - name: check to see which conf files exist
       stat: path={{ item.remote_location }}
       register: stat_result
-      with_items: conf_files
+      with_items: "{{ conf_files }}"
     - name: copy the files that exist locally
       fetch: dest={{ labs_location }}{{ item.1.name }} src={{ item.1.remote_location }} flat=yes
       when: stat_result.results.{{ item.0 }}.stat.exists == True
@@ -25,7 +25,7 @@
     - name: check to see which conf files exist
       stat: path={{ item.remote_location }}
       register: stat_result
-      with_items: conf_files
+      with_items: "{{ conf_files }}"
     - name: copy the files that exist locally
       fetch: dest={{ labs_location }}{{ item.1.name }} src={{ item.1.remote_location }} flat=yes
       when: stat_result.results.{{ item.0 }}.stat.exists == True

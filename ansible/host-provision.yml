@@ -12,8 +12,8 @@
       apt: name=ifenslave state=present
     - name: install vlan
       apt: name=vlan state=present
-    - name: install arping
-      apt: name=arping state=present
+    - name: install vim
+      apt: name=vim state=present
     - name: adding bonding and rtc modules to /etc/modules
       lineinfile: dest=/etc/modules line="{{ item }}"
       with_items:

@@ -3,8 +3,8 @@
 #  Ansible Inventory Definitions #
 ##################################
 
-switch_box = "cumulus-vx-2.5.7"
-host_box = "ubuntu/trusty64"
+switch_box = "cumulus-vx-3.0.0"
+host_box = "boxcutter/ubuntu1604"
 
 groups = {
   "spine" => ["spine1", "spine2"],
@@ -47,9 +47,9 @@ Vagrant.configure(2) do |config|
 	spine2.vm.box = switch_box
 
     spine2.vm.hostname = "spine2"
-    spine1.vm.network "private_network", virtualbox__intnet: "s1l1"
-    spine1.vm.network "private_network", virtualbox__intnet: "s1l2"
-    spine1.vm.network "private_network", virtualbox__intnet: "s1s2"
+    spine2.vm.network "private_network", virtualbox__intnet: "s2l1"
+    spine2.vm.network "private_network", virtualbox__intnet: "s2l2"
+    spine2.vm.network "private_network", virtualbox__intnet: "s1s2"
 
     spine2.vm.provision "ansible" do |ansible|
       ansible.playbook = "ansible/switch-provision.yml"

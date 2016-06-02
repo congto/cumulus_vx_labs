@@ -1,0 +1,20 @@
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+    address 10.0.0.252
+    netmask 255.255.255.255
+
+# The primary network interface
+auto enp0s3
+iface enp0s3 inet dhcp
+pre-up sleep 2
+
+auto enp0s8
+iface enp0s8
+    address 10.0.0.252
+    netmask 255.255.255.255
+    post-up ip route add 10.0.0.0/24 nexthop via 10.0.0.2 dev enp0s8 onlink
+    post-up sleep 3 && arping -q -c 3 -i enp0s8 10.0.0.2
