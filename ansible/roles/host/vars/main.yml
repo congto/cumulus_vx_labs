@@ -10,3 +10,4 @@ conf_files:
   - { name: "interfaces_interfaces.cfg", remote_location: "/etc/network/interfaces.d/interfaces.cfg"}
   - { name: "interfaces_interfaces", remote_location: "/etc/network/interfaces.d/interfaces"}
   - { name: "sources.list", remote_location: "/etc/apt/sources.list"}
+  - { name: "ifplugd", remote_location: "/etc/default/ifplugd"}
