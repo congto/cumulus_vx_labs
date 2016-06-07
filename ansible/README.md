@@ -40,9 +40,9 @@ While this works well for purely local SSH access, it inherently makes it hard t
 
 ## Saving a Custom Lab
 If you create a new lab from the base topology or would just like to save changes you have made to an existing lab, this can be done using the conf-backup.yml playbook. To save a lab:
-`ansible-playbook conf-backup.yml --extra-vars "topology=<topology-name> lab=<lab-name>"`
+  * `ansible-playbook conf-backup.yml --extra-vars "topology=<topology-name> lab=<lab-name>"`
 
-This will copy the configuration files of each host specified in the conf_files variable defined under each role to the topology/<topology-name>/<lab-name>/<hostname> directory. This command will need to be run after any changes are made, which are desired to be saved.
+This will copy the configuration files of each host specified in the conf_files variable defined under each role to the topology/\<topology-name\>/\<lab-name\>/\<hostname\> directory. This command will need to be run after any changes are made, which are desired to be saved.
 
 To later restore these configurations:
-`ansible-playbook conf-restore.yml --extra-vars "topology=<topology-name> lab=<lab-name>"`
+  * `ansible-playbook conf-restore.yml --extra-vars "topology=<topology-name> lab=<lab-name>"`
