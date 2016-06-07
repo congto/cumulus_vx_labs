@@ -2,16 +2,16 @@
 *Much of the following labs and setup are based on slaffer-au's [Cumulus VX - One Stop Demo](https://github.com/slaffer-au/vx_vagrant_one_stop_demo).*
 
 ### What's New
-  * Upgraded Cumulus VX version to 3.0.0 (available [here] (https://cumulusnetworks.com/cumulus-vx/)).
+  * Upgraded Cumulus VX version to 3.0.0.
   * Minor fixes and improvements to Ansible automation.
-  * Rework of the readme
+  * Rework of the readme.
 
 ### Overview
 The following labs are meant as a tool to develop/test/learn Cumulus Linux using the VX virtual platform. A few different base network topologies are provided. Each network topology has some number of pre-built labs, or if the user prefers, the network can be manually configured for the desired results. The following sections will cover more details about prerequisites in addition to deploying the labs.
 
 ### Prerequisites
 The following tools are required to run this demo. Details about how each of the tools are being used can be found [here](https://github.com/nmitchell-cumulus/cumulus_vx_labs#details-about-tools-used).
-  * Download the Cumulus VX version 2.5.6 file for Vagrant Box.
+  * Download the Cumulus VX version 3.0.0 file for Vagrant Box.
    * https://cumulusnetworks.com/cumulus-vx/download/
   * VirtualBox must be installed.
     * https://www.virtualbox.org/
