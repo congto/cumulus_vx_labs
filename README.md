@@ -2,7 +2,7 @@
 *Much of the following labs and setup are based on slaffer-au's [Cumulus VX - One Stop Demo](https://github.com/slaffer-au/vx_vagrant_one_stop_demo).*
 
 ### What's New
-  * Upgraded Cumulus VX from version 2.5.5 to 2.5.6.
+  * Upgraded Cumulus VX version to 3.0.0 (available [here] (https://cumulusnetworks.com/cumulus-vx/)).
   * Minor fixes and improvements to Ansible automation.
   * Rework of the readme
 
