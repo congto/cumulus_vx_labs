@@ -2,3 +2,4 @@
 cl-acltool
 ansible/ansible.log
 ansible/*.retry
+*.deb

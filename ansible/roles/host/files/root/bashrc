@@ -54,3 +54,8 @@ esac
  alias ifb='netshow interface bond'
  #alias conf='vi /etc/network/interfaces'
  alias txlldp='lldpcli configure lldp tx-interval 5'
+
+# tab completion
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+    . /etc/bash_completion
+fi

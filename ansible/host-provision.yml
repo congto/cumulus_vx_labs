@@ -34,3 +34,27 @@
     - name: copy /usr/local/bin directory
       when: stat_result.stat.exists == True
       copy: src=roles/host/files/usr/local/bin/ dest=/usr/local/bin/ owner=root group=staff mode="u+rwx,g+rx,o+rx"
+    # .alias
+    - name: check that alias file exists
+      become: false
+      local_action: stat path=roles/host/files/root/alias
+      register: stat_result
+    - name: copy .alias file
+      when: stat_result.stat.exists == True
+      copy: src=roles/host/files/root/alias dest=/root/.alias
+    # .bashrc
+    - name: check that bashrc file exists
+      become: false
+      local_action: stat path=roles/host/files/root/bashrc
+      register: stat_result
+    - name: copy .bashrc file
+      when: stat_result.stat.exists == True
+      copy: src=roles/host/files/root/bashrc dest=/root/.bashrc
+    # .profile
+    - name: check that profile file exists
+      become: false
+      local_action: stat path=roles/host/files/root/profile
+      register: stat_result
+    - name: copy .profile file
+      when: stat_result.stat.exists == True
+      copy: src=roles/host/files/root/profile dest=/root/.profile
