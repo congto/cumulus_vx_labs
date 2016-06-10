@@ -31,7 +31,7 @@
       when: lab == 'rdnbrd'
 
 # re-apply configurations after packages, etc have been installed for specific lab
-- hosts: vx
+- hosts: cumulus
   roles:
     - cumulus
     - common
@@ -59,7 +59,7 @@
         - restart quagga
         - restart networking
         - restart ptmd
-        - restart interfaces
+        - reload interfaces
         - restart vxsnd
         - restart vxrd
 - hosts: host

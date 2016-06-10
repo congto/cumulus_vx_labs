@@ -1,5 +1,5 @@
 ---
-- hosts: vx
+- hosts: cumulus
   roles:
     - cumulus
     - common
